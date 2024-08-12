@@ -245,9 +245,11 @@ section {
 #about {
     background: linear-gradient(135deg, #f06, #4a90e2);
     padding: 60px 20px;
-    color: #fff;
+    color: black;
     position: relative;
     overflow: hidden;
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.5), inset -5px -5px 10px rgba(255, 255, 255, 0.1); /* Embossed effect */
+    border-radius: 15px; /* Rounded corners for a softer look */
 }
 
 #about .container {
@@ -255,6 +257,10 @@ section {
     margin: 0 auto;
     text-align: center;
     animation: slideInDown 1s ease-in-out;
+    background: linear-gradient(145deg, #f0f0f0, #dcdcdc); /* Embossed gradient for the content */
+    padding: 20px; /* Added padding to space the content from the edges */
+    border-radius: 15px; /* Match the outer container's rounded corners */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2), -6px -6px 12px rgba(255, 255, 255, 0.5); /* Inner content embossed effect */
 }
 
 #about h2 {
@@ -262,14 +268,24 @@ section {
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #fff;
+    color: black;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    border-radius: 10px; /* Soft rounded corners for the heading */
+    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.3), inset -4px -4px 8px rgba(255, 255, 255, 0.1); /* Heading emboss effect */
+    background: linear-gradient(145deg, #e0e0e0, #c0c0c0); /* Light gradient for embossed look */
 }
 
 #about p {
     font-size: 1.2em;
     line-height: 1.8;
     margin-bottom: 20px;
+    color: black;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+    padding: 15px;
+    border-radius: 10px;
+    background: linear-gradient(145deg, #e0e0e0, #c0c0c0); /* Embossed gradient for the paragraph */
+    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.3), inset -4px -4px 8px rgba(255, 255, 255, 0.1); /* Emboss effect */
 }
 
 #about .button {
@@ -281,6 +297,7 @@ section {
     border-radius: 5px;
     font-size: 1.2em;
     transition: background-color 0.3s ease;
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2), -6px -6px 12px rgba(255, 255, 255, 0.5); /* Button emboss effect */
 }
 
 #about .button:hover {
