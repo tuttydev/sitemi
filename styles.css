@@ -319,15 +319,50 @@ section {
     100% { opacity: 1; }
 }
 
+/* Skills Section */
+.skills-container {
+    text-align: center;
+    margin-top: 50px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+#typewriter {
+    font-size: 2.5em; /* Larger font size for better visibility */
+    color: #fff;
+    display: inline-block;
+    overflow: hidden; /* Ensures the text is contained within the box */
+    white-space: nowrap; /* Keeps text on one line */
+    border-right: 4px solid; /* The cursor */
+    animation: blink-caret 0.75s step-end infinite;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Subtle shadow for 3D effect */
+}
+
+/* Keyframes for blinking cursor */
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #fff; }
+}
+
 /* Styling for each skill */
 .skill {
     display: inline-block;
-    font-size: 2em; /* Increased font size */
-    margin: 0 20px; /* Space between skills */
+    font-size: 2.2em; /* Larger font size for more emphasis */
+    margin: 20px;
+    padding: 15px;
     opacity: 0; /* Initially hidden */
-    animation: dissolveIn 1s ease-in-out forwards; /* Fade in effect */
-    padding: 10px; /* Padding for better spacing */
-    border-radius: 5px; /* Rounded corners */
+    animation: dissolveIn 1s ease-in-out forwards;
+    border-radius: 10px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); /* Stronger shadow for embossed effect */
+    background: linear-gradient(145deg, #f0f0f0, #dcdcdc); /* Slight embossed gradient */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.1), -6px -6px 12px rgba(255, 255, 255, 0.5); /* Embossed effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill:hover {
+    transform: translateY(-5px); /* Subtle lift effect */
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.2), -8px -8px 16px rgba(255, 255, 255, 0.6); /* Enhanced shadow on hover */
 }
 
 /* Unique colors for each skill */
@@ -361,7 +396,11 @@ section {
     animation-delay: 5s;
 }
 
-
+/* Keyframes for dissolving effect */
+@keyframes dissolveIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
 
 
 /* Contact Section */
