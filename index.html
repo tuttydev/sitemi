@@ -3,187 +3,301 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tuttydev2024</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Tuttydev | Alasi Olatunde — Fullstack, Branding & Content</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --brand-yellow: #FFD700;
+            --brand-red: #E63946;
+            --brand-black: #0A0A0A;
+            --brand-gray: #121212;
+            --border: #222222;
+            --text-main: #FFFFFF;
+            --text-dim: #A0A0A0;
+            --glow: rgba(255, 215, 0, 0.3);
+        }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+        html { scroll-behavior: smooth; }
+        body { 
+            background: var(--brand-black); 
+            color: var(--text-main); 
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .logo { font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; }
+        [contenteditable="true"]:hover { background: rgba(255, 215, 0, 0.05); cursor: cell; border-radius: 4px; }
+
+        /* --- ANIMATIONS --- */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1.2rem 8%; background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(15px); position: fixed; width: 100%; top: 0; z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--brand-yellow); letter-spacing: -1px; }
+        .logo span { color: var(--text-main); }
+
+        /* --- HERO --- */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center; padding: 120px 8% 60px;
+            background: radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+        }
+        .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center; }
+        .hero-text h1 { 
+            font-size: clamp(2.5rem, 6vw, 5rem); 
+            line-height: 0.95; 
+            margin-bottom: 25px; 
+            letter-spacing: -2px;
+        }
+        .hero-text p { 
+            font-size: 1.15rem; 
+            color: var(--text-dim); 
+            margin-bottom: 40px; 
+            max-width: 600px;
+            border-left: 2px solid var(--brand-yellow);
+            padding-left: 20px;
+        }
+
+        /* --- CORRECTED IMAGE CSS --- */
+        .hero-visual {
+            aspect-ratio: 4/5; 
+            background: var(--brand-gray); 
+            border-radius: 40px;
+            border: 1px solid var(--border); 
+            overflow: hidden;
+            background-image: url('ola.jpg'); /* Fix: Use url() for CSS background */
+            background-size: cover; 
+            background-position: center; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 20px var(--glow);
+            transition: 0.5s ease;
+        }
+        .hero-visual:hover { transform: scale(1.02) rotate(1deg); }
+
+        /* --- SERVICES --- */
+        section { padding: 120px 8%; }
+        .section-tag { 
+            color: var(--brand-yellow); font-weight: 700; font-size: 0.8rem; 
+            margin-bottom: 15px; display: inline-block; letter-spacing: 3px;
+            background: rgba(255, 215, 0, 0.1); padding: 5px 15px; border-radius: 50px;
+        }
+        .section-title { font-size: 3.5rem; margin-bottom: 60px; letter-spacing: -1px; }
+
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .service-card {
+            background: linear-gradient(145deg, #151515, #0a0a0a); 
+            padding: 50px; border-radius: 30px;
+            border: 1px solid var(--border); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .service-card:hover { 
+            border-color: var(--brand-yellow); 
+            transform: translateY(-10px); 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+        .service-card i { font-size: 2.8rem; color: var(--brand-yellow); margin-bottom: 30px; display: block; }
+        .service-card h3 { margin-bottom: 15px; font-size: 1.6rem; color: var(--brand-yellow); }
+
+        /* --- STATS --- */
+        .social-proof { background: #080808; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: center; }
+        .stat-item h2 { font-size: 4rem; color: var(--text-main); margin-bottom: 10px; }
+        .stat-item p { color: var(--brand-yellow); font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; }
+
+        /* --- PORTFOLIO --- */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .portfolio-item { 
+            aspect-ratio: 4/5; background: #1a1a1a; border-radius: 25px; 
+            overflow: hidden; position: relative; border: 1px solid var(--border);
+        }
+        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        .portfolio-item:hover img { transform: scale(1.1); filter: brightness(0.7); }
+        .portfolio-overlay {
+            position: absolute; bottom: 0; left: 0; right: 0; padding: 40px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            opacity: 0; transition: 0.4s; transform: translateY(20px);
+        }
+        .portfolio-item:hover .portfolio-overlay { opacity: 1; transform: translateY(0); }
+
+        /* --- CONTACT --- */
+        .contact-flex { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+        .form-input { 
+            width: 100%; background: #151515; border: 1px solid var(--border);
+            padding: 22px; border-radius: 15px; color: white; margin-bottom: 20px; font-size: 1rem;
+            transition: 0.3s;
+        }
+        .form-input:focus { border-color: var(--brand-yellow); background: #1a1a1a; box-shadow: 0 0 15px var(--glow); }
+
+        /* --- BUTTONS --- */
+        .btn {
+            padding: 22px 50px; border-radius: 18px; text-decoration: none; font-weight: 800;
+            display: inline-block; cursor: pointer; border: none; font-size: 1.1rem; 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); text-transform: uppercase; letter-spacing: 1px;
+        }
+        .btn-primary { background: var(--brand-yellow); color: var(--brand-black); }
+        .btn-whatsapp { background: #25D366; color: white; margin-left: 15px; }
+        .btn:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+
+        @media (max-width: 992px) {
+            .hero-grid, .contact-flex { grid-template-columns: 1fr; text-align: center; gap: 60px; }
+            .hero-text p { margin: 0 auto 40px; border-left: none; border-top: 2px solid var(--brand-yellow); padding: 20px 0 0; }
+            .section-title { font-size: 2.5rem; }
+        }
+    </style>
 </head>
-
-
 <body>
-    <!-- Navigation Bar -->
-    <!-- Navigation Bar -->
-<nav class="navbar">
-    <div class="logo">
-        <img src="logo.png" alt="Logo">
-    </div>
-    <div class="nav-links">
-        <a href="#hero" class="nav-link">Home</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#skills" class="nav-link">Skills</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#contact" class="nav-link">Contact</a>
-    </div>
-</nav>
 
-
-
-    <!-- Hero Section -->
-    <section id="home" class="hero scroll-element">
-        <div class="hero-content">
-            <h1>My Portfolio</h1>
-            <p>Creating exceptional digital experiences</p>
-            <a href="#contact" class="contact-button">Get in Touch</a>
+    <nav>
+        <div class="logo">TUTTY<span>DEV</span></div>
+        <div class="nav-cta">
+            <a href="https://wa.me/+2348137335772" class="btn btn-whatsapp" style="padding: 12px 25px; font-size: 0.8rem;">
+                <i class="fab fa-whatsapp"></i> LET'S CHAT
+            </a>
         </div>
-        <div class="hero-overlay"></div>
-    </section>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-grid">
+            <div class="hero-text reveal">
+                <span class="section-tag" contenteditable="true">SOFTWARE • BRANDING • CONTENT</span>
+                <h1 contenteditable="true">Building <span style="color:var(--brand-yellow)">Digital Power</span> for the Modern Web.</h1>
+                <p contenteditable="true">
+                    I bridge the gap between complex engineering and aesthetic storytelling. 
+                    From scalable Django backends to high-engagement visual brands, 
+                    I build products that convert users into loyal customers.
+                </p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn btn-primary">START A PROJECT</a>
+                </div>
+            </div>
+            <div class="hero-visual reveal" style="transition-delay: 0.2s;"></div>
+        </div>
     </header>
 
-
-
-<!-- About Me Section -->
-<div class="about-container">
-        <h1>About Me</h1>
-        <p>I'm Alasi Olatunde a dedicated Fullstack Software Developer with a passion for creating cutting-edge Web, Mobile & Desktop Applications, Automations and Web Scraping solutions.</p>
-       
-        <button id="learn-more">Learn More</button>
-        <div id="more-info" class="hidden">
-            <p>My expertise lies in merging functionality with visually captivating designs, ensuring that each project not only fulfills but surpasses client expectations. From building robust backends to crafting intuitive user interfaces, I aim to deliver solutions that stand out in today's competitive landscape. Let's collaborate to bring your vision to life!!</p>
-        </div>
-    </div>
-
-
-   <!-- Skills Section -->
-<section id="skills" class="scroll-element">
-    <div class="container">
-        <h2>My Skills</h2>
-        <div class="skills-list">
-            <div class="skill" style="--skill-color: #FF6347;"> <!-- Tomato -->
-                <h3>JavaScript</h3>
+    <section class="social-proof reveal">
+        <div class="stat-grid">
+            <div class="stat-item">
+                <h2 contenteditable="true">50+</h2>
+                <p contenteditable="true">Systems Deployed</p>
             </div>
-            <div class="skill" style="--skill-color: #FFD700;"> <!-- Gold -->
-                <h3>Python</h3>
+            <div class="stat-item">
+                <h2 contenteditable="true">98%</h2>
+                <p contenteditable="true">Client Retention</p>
             </div>
-            <div class="skill" style="--skill-color: #7FFFD4;"> <!-- Aquamarine -->
-                <h3>React</h3>
-            </div>
-            <div class="skill" style="--skill-color: #6A5ACD;"> <!-- SlateBlue -->
-                <h3>Django</h3>
-            </div>
-            <div class="skill" style="--skill-color: #FF69B4;"> <!-- HotPink -->
-                <h3>CSS</h3>
-            </div>
-            <div class="skill" style="--skill-color: #00FA9A;"> <!-- MediumSpringGreen -->
-                <h3>HTML</h3>
+            <div class="stat-item">
+                <h2 contenteditable="true">1M+</h2>
+                <p contenteditable="true">Social Reach</p>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-
-    <!-- Project Section -->
-<section id="projects" class="scroll-element">
-    <div class="container">
-        <h2> Projects</h2>
-        <div class="project">
-            <div class="project-image">
-                <img src="pro1.jpg" alt="Project Image">
+    <section id="services">
+        <div class="reveal">
+            <span class="section-tag" contenteditable="true">EXPERTISE</span>
+            <h2 class="section-title" contenteditable="true">Technical Prowess.</h2>
+        </div>
+        <div class="service-grid">
+            <div class="service-card reveal">
+                <i class="fas fa-terminal"></i>
+                <h3 contenteditable="true">Fullstack Dev</h3>
+                <p contenteditable="true">Custom Python/Django architectures and interactive React interfaces built for performance.</p>
             </div>
-            <div class="project-text">
-                <h3>Automated Invoice System</h3>
-                <p>It is a system created to help businesses maximize time, gives a proper storage of data and help generate an automated invoice from the info collected and inputed in a safe manner.</p>
-                <p>click the link below to view most of my created apps i.e Web, Mobile & Desktop Applications</p> <a href="https://www.github.com/tuttydev" target="_blank">tuttydev</a>
+            <div class="service-card reveal" style="transition-delay: 0.1s;">
+                <i class="fas fa-layer-group"></i>
+                <h3 contenteditable="true">Visual Branding</h3>
+                <p contenteditable="true">Identity design optimized for the 4:5 mobile ratio. Bold, scroll-stopping aesthetics.</p>
+            </div>
+            <div class="service-card reveal" style="transition-delay: 0.2s;">
+                <i class="fas fa-bolt"></i>
+                <h3 contenteditable="true">Growth Strategy</h3>
+                <p contenteditable="true">Algorithm-focused content engines designed to monetize attention and scale impact.</p>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-
-<section id="projects" class="scroll-element">
-    <div class="container">
-
-        <div class="project">
-            <div class="project-image">
-                <img src="pro2.jpg" alt="Project Image">
+    <section id="portfolio" style="background: #080808;">
+        <div class="reveal">
+            <span class="section-tag" contenteditable="true">WORKS</span>
+            <h2 class="section-title" contenteditable="true">Selected Works.</h2>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item reveal">
+                <img src="soft.png" alt="Design">
+                <div class="portfolio-overlay"><h4>Software Architecture</h4></div>
             </div>
-            <div class="project-text">
-                <h3>Employee Management System </h3>
-                <p>The HTML template represents an employee dashboard with a Bootstrap-styled layout. It includes a navigation bar with links to the dashboard, employee list, and a form to add new employees. The main content features a section for displaying statistics like the total number of employees and a table listing employees with options to edit or delete each entry. Basic styling is applied, and Bootstrap is used for responsive design..</p>
-               <p>click the link below to view most of my created apps i.e Web, Mobile & Desktop Applications</p> <a href="https://www.github.com/tuttydev" target="_blank">tuttydev</a>
+            <div class="portfolio-item reveal" style="transition-delay: 0.1s;">
+                <img src="brand.png" alt="Design">
+                <div class="portfolio-overlay"><h4>Brand Identity</h4></div>
+            </div>
+            <div class="portfolio-item reveal" style="transition-delay: 0.2s;">
+                <img src="growth.png" alt="Design">alt="Strategy">
+                <div class="portfolio-overlay"><h4>Growth Marketing</h4></div>
             </div>
         </div>
-    </div>
-</section>
-
-
-<section id="projects" class="scroll-element">
-    <div class="container">
-
-        <div class="project">
-            <div class="project-image">
-                <img src="pro3.jpg" alt="Project Image">
-            </div>
-            <div class="project-text">
-                <h3>Point Of Sale</h3>
-                <p>This App/code defines a simple point-of-sale (POS) application using the Tkinter library in Python. It initializes a main window with a title and a specific background color, creating a responsive layout that positions various widgets, including product selection, quantity entry, and cart display. Users can select products and specify quantities to add items to a shopping cart, with a total that updates dynamically as items are added. The application provides a checkout feature, displaying a summary of the order and a thank-you message when completed. Overall, it demonstrates the creation of a user-friendly graphical interface for basic sales transactions........
-</p>
-<p>click the link below to view most of my created apps i.e Web, Mobile & Desktop Applications</p> <a href="https://www.github.com/tuttydev" target="_blank">tuttydev</a>
-               
-            </div>
-        </div>
-    </div>
-</section>
-
-
+    </section>
 
     <section id="contact">
-    <h2>Contact Us</h2>
-    <p>If you have any questions or inquiries, feel free to reach out!</p>
-    <div class="contact-cards">
-        <div class="contact-card">
-            <i class="fas fa-phone"></i>
-            <h3>Phone</h3>
-            <p><a href="tel:+2348137335772">+2348137335772</a></p>
-            <p><a href="tel:+2349059058486">+2349059058486</a></p>
+        <div class="contact-flex reveal">
+            <div>
+                <span class="section-tag" contenteditable="true">NEXT STEPS</span>
+                <h2 style="font-size: 3.5rem; margin-bottom: 25px; line-height: 1;" contenteditable="true">Ready to <span style="color:var(--brand-yellow)">Dominate?</span></h2>
+                <p contenteditable="true" style="color:var(--text-dim); margin-bottom: 40px; font-size: 1.2rem;">I am currently booking high-impact projects for Q3 2026. Let's make your brand undeniable.</p>
+                <div class="trust-badge" style="border: 1px solid var(--border); padding: 25px; border-radius: 20px; display: inline-block; background: var(--brand-gray);">
+                    <i class="fas fa-check-circle" style="color:var(--brand-yellow); margin-right: 10px;"></i> Professional Grade Execution
+                </div>
+            </div>
+            <div>
+                <form id="mainContact">
+                    <input type="text" class="form-input" placeholder="Name" required>
+                    <input type="email" class="form-input" placeholder="Email" required>
+                    <select class="form-input">
+                        <option>Fullstack Development</option>
+                        <option>Brand Identity Design</option>
+                        <option>Content/Growth Strategy</option>
+                    </select>
+                    <textarea class="form-input" rows="4" placeholder="Your Vision..."></textarea>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">DEPLOY PROJECT</button>
+                </form>
+            </div>
         </div>
-        <div class="contact-card">
-            <i class="fas fa-envelope"></i>
-            <h3>Email</h3>
-            <p><a href="mailto:alasiolatunde@gmail.com">alasiolatunde@gmail.com</a></p>
-        </div>
-        <div class="contact-card">
-            <i class="fab fa-github"></i>
-            <h3>GitHub</h3>
-            <p><a href="https://github.com/tuttydev" target="_blank">tuttydev</a></p>
-        </div>
-    </div>
-</section>
+    </section>
 
+    <footer style="padding: 60px 8%; text-align: center; border-top: 1px solid var(--border); background: var(--brand-black);">
+        <p contenteditable="true" style="color: var(--text-dim); font-size: 0.9rem;">&copy; 2026 TUTTYDEV STUDIO | ALASI OLATUNDE. ALL RIGHTS RESERVED.</p>
+    </footer>
 
+    <script>
+        // Intersection Observer for Reveal Effects
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
 
-<!-- Footer Section -->
-<footer>
-    <h2>Stay Connected</h2>
-    <div class="footer-links">
-        <a href="#about">About Us</a>
-      
-        <a href="#contact">Contact</a>
-        <a href="#privacy">Privacy Policy</a>
-    </div>
-    <div class="footer-social">
-        <a href="https://facebook.com/yourusername" target="_blank" class="fab fa-facebook-f"></a>
-        <a href="https://twitter.com/yourusername" target="_blank" class="fab fa-twitter"></a>
-   
-        <a href="https://github.com/tuttydev" target="_blank" class="fab fa-github"></a>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2024 tuttydev2024. All rights reserved. | <a href="#terms">Terms of Service</a> | <a href="#privacy">Privacy Policy</a></p>
-    </div>
-</footer>
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-
-
-    <script src="scripts.js"></script>
+        // Form Logic
+        document.getElementById('mainContact').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button');
+            btn.innerText = "SENDING...";
+            setTimeout(() => {
+                alert('Inquiry received! Tuttydev will reach out within 24 hours.');
+                btn.innerText = "DEPLOY PROJECT";
+                this.reset();
+            }, 1500);
+        });
+    </script>
 </body>
 </html>
